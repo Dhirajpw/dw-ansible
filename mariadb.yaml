@@ -76,18 +76,15 @@
     # - debug:
     #     var: query_result
 
-    - name: create user mariadb
-      tasks:
-        - name: Run command 1
-          command: sudo -i 
-        - name: Run command 2
-          command: mysql -u root -p12345
-        - name: Run command 3
-          command: mysql -u root -p12345
-        - name: Run command 4
-          command: |
-           CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
-           GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
-           FLUSH PRIVILEGES;
-        - name: Run command 5
-          command: exit;
+   - name: create user mariadb
+    tasks:
+      - name: Run command 1
+        command: sudo -i 
+      - name: Run command 2
+        command: mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';"
+      - name: Run command 3
+        command: mysql -u root -p12345 -e "GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';"
+      - name: Run command 4
+        command: mysql -u root -p12345 -e "FLUSH PRIVILEGES;"
+      - name: Run command 5
+        command: exit;
