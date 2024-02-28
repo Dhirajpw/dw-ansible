@@ -17,25 +17,12 @@
       pip:
         name:
           - pexpect
-          # - mysqlclient
-          # - PyMySQL-1.1.0
         state: present
 
     - name: Is root password set?
       command: mysql -u root --execute "SELECT NOW()"
       register: is_root_password_set
       ignore_errors: yes
-
-    # - name: Delete anonymous users
-    #   mysql_user:
-    #     user: ""
-    #     state: absent
-    #   when: is_root_password_set.rc == 0
-
-    # - name: Generate mysql root password
-    #   shell: tr -d -c "a-zA-Z0-9" < /dev/urandom | head -c 10
-    #   register: mysql_root_password
-    #   when: is_root_password_set.rc == 0
 
     - name: secure mariadb
       expect:
@@ -52,6 +39,7 @@
       register: secure_mariadb
       failed_when: "'... Failed!' in secure_mariadb.stdout"
       become: true
+
     - name: create user mariadb
       tasks:
         - name: Run command 1
@@ -64,28 +52,3 @@
           command: mysql -u root -p12345 -e "FLUSH PRIVILEGES;"
         - name: Run command 5
           command: exit;
-
-    # - name: Create user for maria db
-    #   mysql_user:
-    #     name: deepak
-    #     password: "12345"
-    #     priv: '*.*:ALL'
-    #     login_user: root
-    #     login_password: "12345"
-    #     state: present
-    #   when: is_root_password_set.rc == 0
-    # - name: Create user and grant access to database
-    #   mysql_query:
-    #     login_user: root
-    #     login_password: 12345
-    #     query: |
-    #       CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
-    #       GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
-    #       FLUSH PRIVILEGES;
-    #   when: is_root_password_set.rc == 0
-
-
-    # - debug:
-    #     var: query_result
-
-
