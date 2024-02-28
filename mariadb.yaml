@@ -62,19 +62,32 @@
     #     login_password: "12345"
     #     state: present
     #   when: is_root_password_set.rc == 0
-    - name: Create user and grant access to database
-      mysql_query:
-        login_user: root
-        login_password: 12345
-        query: |
-          CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
-          GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
-          FLUSH PRIVILEGES;
-      when: is_root_password_set.rc == 0
+    # - name: Create user and grant access to database
+    #   mysql_query:
+    #     login_user: root
+    #     login_password: 12345
+    #     query: |
+    #       CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
+    #       GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
+    #       FLUSH PRIVILEGES;
+    #   when: is_root_password_set.rc == 0
 
 
     # - debug:
     #     var: query_result
 
-    # - name: create user mariadb
-      
+     - name: create user mariadb
+       tasks:
+        - name: Run command 1
+          command: sudo -i 
+        - name: Run command 2
+          command: mysql -u root -p12345
+        - name: Run command 3
+          command: mysql -u root -p12345
+        - name: Run command 4
+          command: |
+           CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
+           GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
+           FLUSH PRIVILEGES;
+        - name: Run command 5
+          command: exit;
