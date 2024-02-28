@@ -45,6 +45,7 @@
         mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';
         GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';
         FLUSH PRIVILEGES;"
+      when: is_root_password_set.rc == 0 and user_exists.stdout_lines[0] == "0"
 
     - name: create  database
       command: >
