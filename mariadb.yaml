@@ -76,8 +76,8 @@
     # - debug:
     #     var: query_result
 
-     - name: create user mariadb
-       tasks:
+    - name: create user mariadb
+      tasks:
         - name: Run command 1
           command: sudo -i 
         - name: Run command 2
