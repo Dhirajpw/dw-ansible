@@ -52,6 +52,18 @@
       register: secure_mariadb
       failed_when: "'... Failed!' in secure_mariadb.stdout"
       become: true
+    - name: create user mariadb
+      tasks:
+        - name: Run command 1
+          command: sudo -i 
+        - name: Run command 2
+          command: mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';"
+        - name: Run command 3
+          command: mysql -u root -p12345 -e "GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';"
+        - name: Run command 4
+          command: mysql -u root -p12345 -e "FLUSH PRIVILEGES;"
+        - name: Run command 5
+          command: exit;
 
     # - name: Create user for maria db
     #   mysql_user:
@@ -76,15 +88,4 @@
     # - debug:
     #     var: query_result
 
-   - name: create user mariadb
-    tasks:
-      - name: Run command 1
-        command: sudo -i 
-      - name: Run command 2
-        command: mysql -u root -p12345 -e "CREATE USER 'deepak'@'localhost' IDENTIFIED BY '12345';"
-      - name: Run command 3
-        command: mysql -u root -p12345 -e "GRANT ALL PRIVILEGES ON *.* TO 'deepak'@'localhost';"
-      - name: Run command 4
-        command: mysql -u root -p12345 -e "FLUSH PRIVILEGES;"
-      - name: Run command 5
-        command: exit;
+
