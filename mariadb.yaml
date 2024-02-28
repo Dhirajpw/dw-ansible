@@ -41,6 +41,8 @@
       become: true
 
     - name: create user mariadb
+      hosts: db_servers
+      become: true
       tasks:
         - name: Run command 1
           command: sudo -i 
