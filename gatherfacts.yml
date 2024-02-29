@@ -43,7 +43,7 @@
     - name: install package
       yum:
         name: "{{ item }}" 
-      state: present
+        state: present
       loop:                  ##loops
         - httpd
         - nginx
