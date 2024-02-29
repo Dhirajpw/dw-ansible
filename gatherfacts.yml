@@ -49,3 +49,20 @@
         - nginx
         - java
       become: true
+
+
+    - name: set facts
+      set_fact:
+        my_os = "ubuntu"  ##set facts
+    - name: print OS
+      debug:
+        msg: "{{my_os}}"
+
+
+    - name: set facts
+      set_fact:
+        my_package = "tomcat"
+    - name: install package
+      package:
+        name: "{{my_package}}"
+        state: present
