@@ -28,7 +28,7 @@
     - name: Task 1 (conditional)
       command:  yum install java -y
       when: ansible_os_family == "RedHat"  ##condition
-      become: true
+      become: true                         ## privilage escalation
     
     
     
@@ -48,3 +48,4 @@
         - httpd
         - nginx
         - java
+      become: true
