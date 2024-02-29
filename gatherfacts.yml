@@ -63,10 +63,10 @@
         msg: "{{my_name}}"
 
 
-    # - name: set facts
-    #   set_facts:
-    #     my_package = "tomcat"
-    # - name: install package
-    #   package:
-    #     name: "{{my_package}}"
-    #     state: present
+    - name: set facts
+      set_facts:
+        my_package: "tomcat9"
+    - name: install package
+      package:
+        name: "{{my_package}}"
+        state: present
