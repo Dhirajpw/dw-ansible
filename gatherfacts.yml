@@ -10,5 +10,5 @@
         msg: "{{ansible_os_family}}"
     - name: print os 
       debug:
-        msg: "{{ipv4.address}}"
+        msg: "{{ansible_processor_cores}}"
 
