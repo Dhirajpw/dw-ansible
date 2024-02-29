@@ -1,6 +1,5 @@
 - name: print msg 
   hosts: all
-  become: true
   tasks:
     - name: Gather Facts #gather facts
       debug:
@@ -21,3 +20,4 @@
     - name: Task 1 (conditional)
       command:  yum install java -y
       when: ansible_os_family == "RedHat"
+      become: true
