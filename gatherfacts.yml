@@ -52,7 +52,7 @@
 
 
     - name: set facts
-      set_fact:
+      set_facts:
         my_os = "ubuntu"  ##set facts
     - name: print OS
       debug:
@@ -60,7 +60,7 @@
 
 
     - name: set facts
-      set_fact:
+      set_facts:
         my_package = "tomcat"
     - name: install package
       package:
