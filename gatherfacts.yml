@@ -8,6 +8,9 @@
     - name: print os 
       debug:
         msg: "{{ansible_os_family}}"
+    - name: print error 
+      debug:
+        msg: "{{abc.123}}"
     - name: print os 
       debug:
         msg: "{{ansible_processor_cores}}"
