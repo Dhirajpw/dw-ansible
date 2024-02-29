@@ -5,6 +5,10 @@
     - name: Gather Facts 
       debug:
         msg: "Hello World"
-
-
+    - name: print os 
+      debug:
+        msg: "{{ansible_os_family}}"
+    - name: print os 
+      debug:
+        msg: "{{ipv4.address}}"
 
