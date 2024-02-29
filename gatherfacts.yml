@@ -11,6 +11,7 @@
     - name: print error 
       debug:
         msg: "{{abc.123}}"
+      ignore_errors: true
     - name: print os 
       debug:
         msg: "{{ansible_processor_cores}}"
