@@ -1,0 +1,4 @@
+- name: Gather Facts 
+  host: all
+  debug:
+    msg: "Hello World"
