@@ -1,4 +1,10 @@
-- name: Gather Facts 
-  host: all
-  debug:
-    msg: "Hello World"
+- name: print msg 
+  hosts: all
+  become: true
+  tasks:
+    - name: Gather Facts 
+      debug:
+        msg: "Hello World"
+
+
+
