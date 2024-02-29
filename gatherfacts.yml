@@ -39,3 +39,12 @@
         - Apple
         - Banana
         - Orange
+
+    - name: install package
+      yum:
+        name: "{{ item }}" 
+      state: present
+      loop:                  ##loops
+        - httpd
+        - nginx
+        - java
