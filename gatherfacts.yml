@@ -53,10 +53,14 @@
 
     - name: set facts
       set_fact:
-        my_os= "ubuntu"  ##set facts
+        my_os: "ubuntu"
+        my_name: "deepak"                 ##set facts
     - name: print OS
       debug:
-        msg: "{{my_os}}"
+        msg: "{{ my_os }}"
+    - name: print my name 
+      debug:
+        msg: "{{my_name}}"
 
 
     # - name: set facts
