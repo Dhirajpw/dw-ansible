@@ -20,4 +20,4 @@
     #   when: ansible_os_family == "Debian" or ansible_os_family == "Redhat"
     - name: Task 1 (conditional)
       command:  yum install java -y
-      when: ansible_os_family == "Redhat"
+      when: ansible_os_family == "RedHat"
